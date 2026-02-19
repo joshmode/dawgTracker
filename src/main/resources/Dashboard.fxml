@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<TabPane tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml" fx:controller="DashboardController">
+
+    <Tab text="Vitals &amp; Activity">
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+            <GridPane hgap="15" vgap="15" alignment="CENTER">
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-border-color: #ccc; -fx-padding: 10;">
+                    <Label text="Heart Rate (RHR)"/>
+                    <Label fx:id="hrLabel" text="-- bpm" style="-fx-font-size: 18px; -fx-text-fill: red;"/>
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-border-color: #ccc; -fx-padding: 10;">
+                    <Label text="Respiratory (RRR)"/>
+                    <Label fx:id="rrLabel" text="-- breaths/min" style="-fx-font-size: 18px; -fx-text-fill: blue;"/>
+                </VBox>
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-border-color: #ccc; -fx-padding: 10;">
+                    <Label text="Active Minutes"/>
+                    <ProgressBar fx:id="actBar" progress="0.0" prefWidth="100"/>
+                    <Label fx:id="actLabel" text="-- / -- mins"/>
+                </VBox>
+
+                <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-border-color: #ccc; -fx-padding: 10;">
+                    <Label text="Scratch Index"/>
+                    <Label fx:id="scratchLabel" text="--" style="-fx-font-size: 18px;"/>
+                </VBox>
+            </GridPane>
+
+            <VBox style="-fx-background-color: #fff3cd; -fx-padding: 10; -fx-border-color: #ffeeba;">
+                <Label fx:id="alert" text="" wrapText="true"/>
+            </VBox>
+
+            <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+                <TextField fx:id="hrInput" promptText="Heart Rate" prefWidth="90"/>
+                <TextField fx:id="rrInput" promptText="Resp Rate" prefWidth="90"/>
+                <TextField fx:id="actInput" promptText="Active Mins" prefWidth="90"/>
+                <TextField fx:id="scratchInput" promptText="Scratches" prefWidth="90"/>
+                <Button text="Save Stats" onAction="#saveStats" style="-fx-base: #007bff; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </Tab>
+
+    <Tab text="Activity History">
+        <VBox spacing="10" style="-fx-padding: 20;">
+             <Label text="Daily Active Minutes History" style="-fx-font-weight: bold;"/>
+             <ListView fx:id="actHistList" prefHeight="300"/>
+        </VBox>
+    </Tab>
+
+    <Tab text="Logs &amp; Tracking">
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="Food Intake" style="-fx-font-weight: bold;"/>
+            <HBox spacing="10">
+                <TextField fx:id="foodName" promptText="Meal (e.g. Breakfast)" prefWidth="150"/>
+                <TextField fx:id="foodAmt" promptText="Amount" prefWidth="80"/>
+                <Button text="Add Meal" onAction="#saveFood"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Total Today:"/>
+                <Label fx:id="foodTotal" text="0.0 / 0.0"/>
+            </HBox>
+            <ListView fx:id="foodList" prefHeight="100"/>
+
+            <Label text="Weight Tracking" style="-fx-font-weight: bold; -fx-padding-top: 10;"/>
+            <HBox spacing="10">
+                <TextField fx:id="wtInput" promptText="Current Weight" prefWidth="100"/>
+                <Button text="Log Weight" onAction="#saveWt"/>
+            </HBox>
+            <ListView fx:id="wtList" prefHeight="100"/>
+        </VBox>
+    </Tab>
+
+    <Tab text="Routine Care &amp; History">
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="teethLabel" text="" prefWidth="200"/>
+                <Button text="Mark Teeth Brushed" onAction="#brushTeeth"/>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="earsLabel" text="" prefWidth="200"/>
+                <Button text="Mark Ears Cleaned" onAction="#cleanEars"/>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="groomLabel" text="" prefWidth="200"/>
+                <Button text="Mark Groomed" onAction="#brushCoat"/>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="showerLabel" text="" prefWidth="200"/>
+                <Button text="Mark Shower Given" onAction="#giveShower"/>
+            </HBox>
+
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label fx:id="nexLabel" text="" prefWidth="200"/>
+                <Button text="Mark NexGard Given" onAction="#giveNexgard"/>
+            </HBox>
+
+            <Label text="Grooming Log History" style="-fx-font-weight: bold; -fx-padding-top: 10;"/>
+            <ListView fx:id="groomList" prefHeight="120"/>
+
+            <Button text="Refresh Reminders" onAction="#reload" style="-fx-margin-top: 10;"/>
+        </VBox>
+    </Tab>
+
+    <Tab text="Settings">
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <Label text="Target Goals" style="-fx-font-weight: bold;"/>
+            <GridPane hgap="10" vgap="10">
+                <Label text="Target Active Mins:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="tgtActInput" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="80"/>
+
+                <Label text="Ideal Weight:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="optWtInput" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="80"/>
+
+                <Label text="Daily Food Amount:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="tgtFoodInput" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="80"/>
+            </GridPane>
+
+            <Label text="Routine Intervals (Days)" style="-fx-font-weight: bold; -fx-padding-top: 10;"/>
+            <GridPane hgap="10" vgap="10">
+                <Label text="Teeth Brushing:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="teethIntInput" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="80"/>
+
+                <Label text="Ear Cleaning:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="earsIntInput" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="80"/>
+
+                <Label text="Grooming:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="groomIntInput" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="80"/>
+
+                <Label text="Shower:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="showerIntInput" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="80"/>
+
+                <Label text="NexGard:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="nexIntInput" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="80"/>
+            </GridPane>
+
+            <Button text="Save Settings" onAction="#saveSettings" style="-fx-base: #28a745; -fx-text-fill: white;"/>
+        </VBox>
+    </Tab>
+
+</TabPane>
