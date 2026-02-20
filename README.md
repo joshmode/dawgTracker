@@ -1,4 +1,4 @@
-# Dog Trackee by Joshmode
+# Dog Tracker by Joshmode
 
 A simple JavaFX application for tracking pet vitals, routines, and food intake. Created for fun by joshmode for his beloved dog Jojo <3
 
