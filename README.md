@@ -1,4 +1,4 @@
-# Jojo Watch by Joshmode
+# Dog Trackee by Joshmode
 
 A simple JavaFX application for tracking pet vitals, routines, and food intake. Created for fun by joshmode for his beloved dog Jojo <3
 
@@ -34,5 +34,5 @@ mvn test
 
 ## Notes & Limitations
 
-- Data is erased at shutdown. Will create an SQL database for future plans. 
-- Daily food tracking resets automatically based on the date.
+- Data is erased at shutdown. Will create an SQL database for future plans. (EDIT: resolved with backend implementation)
+- Daily food tracking, vitals resets automatically based on the date.
