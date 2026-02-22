@@ -1,7 +1,7 @@
 ### `dawgTracker` 
 # 🐾 dawgTracker: Biometric Data Logging Engine
 ```markdown
-# A Java-based application featuring a custom graphical user interface (GUI), designed to persistently log time-series health metrics and compute predictive anomaly indices.  ## Data Ingestion Architecture  ```text [ GUI Client ] ──► Inputs: Vitals, Weight, Grooming, Food        │        ▼ ( Local Data Store ) ──► Persists time-series health logs        │        ▼ ( Analytic Engine ) ──► Processes 'Scratch Index' Algorithm        │        ▼ [ Alert System ] ──► Flags potential allergy anomalies 
+## A Java-based application featuring a custom graphical user interface (GUI), designed to persistently log time-series health metrics and compute predictive anomaly indices.  ## Data Ingestion Architecture  ```text [ GUI Client ] ──► Inputs: Vitals, Weight, Grooming, Food        │        ▼ ( Local Data Store ) ──► Persists time-series health logs        │        ▼ ( Analytic Engine ) ──► Processes 'Scratch Index' Algorithm        │        ▼ [ Alert System ] ──► Flags potential allergy anomalies 
 ⚙️ Core Engineering
 	•	Time-Series Data Management: Engineered robust logging mechanisms to persistently track daily metrics over extended periods.
 	•	Predictive Analytics: Developed a unique "Scratch Index" to analyze behavioral frequency data and proactively flag allergic reactions.
