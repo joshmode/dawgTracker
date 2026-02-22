@@ -2,7 +2,7 @@
 
 > A Java-based telemetry application featuring a custom graphical user interface (GUI), engineered to persistently log health metrics and compute predictive anomaly indices.
 
-## 🏗️ Data Ingestion & Processing Flow
+## Data Ingestion & Processing Flow
 
 ```text
 [ Java GUI Client ] ──► Captures Vitals, Weight, Food & Grooming Logs
