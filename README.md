@@ -1,6 +1,10 @@
-# Dog Tracker by Joshmode
+### `dawgTracker` 
+# 🐾 dawgTracker: Biometric Data Logging Engine  > A Java-based application featuring a custom graphical user interface (GUI), designed to persistently log time-series health metrics and compute predictive anomaly indices.  ## Data Ingestion Architecture  ```text [ GUI Client ] ──► Inputs: Vitals, Weight, Grooming, Food        │        ▼ ( Local Data Store ) ──► Persists time-series health logs        │        ▼ ( Analytic Engine ) ──► Processes 'Scratch Index' Algorithm        │        ▼ [ Alert System ] ──► Flags potential allergy anomalies 
+⚙️ Core Engineering
+	•	Time-Series Data Management: Engineered robust logging mechanisms to persistently track daily metrics over extended periods.
+	•	Predictive Analytics: Developed a unique "Scratch Index" to analyze behavioral frequency data and proactively flag allergic reactions.
+	•	Application Design: Built entirely in Java with a focus on usability and strict state management.
 
-A simple JavaFX application for tracking pet vitals, routines, and food intake. Created for fun by joshmode for his beloved dog Jojo <3
 
 ## Prerequisites
 
